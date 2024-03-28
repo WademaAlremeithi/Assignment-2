@@ -1,8 +1,4 @@
-# This is a sample Python script.
-
-# Press ⌃R to execute it or replace it with your code.
-# Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
-
+patients =[]
 #Patient class
 class Patient :
     def __init__(self, name, dob, gender, phone_number, allergies, past_illness, vaccines, current_conditions):
@@ -64,6 +60,10 @@ class Patient :
 
         def set_current_conditions(self, current_conditions):
             self.current_conditions = current_conditions
+        
+        def  store_patient(self, name):
+            patients.append(name)
+            return patients
 
 class Queue: #this creates the class for the queue data structure to be used for the consultation queue of patients
     def __init__(self):
@@ -84,7 +84,30 @@ class Queue: #this creates the class for the queue data structure to be used for
     def __str__(self):
         return str(self.items)
         
+class Stack:
+    def __init__(self):
+        self.stack = []
 
+    def push(self, item):
+        self.stack.append(item)
+
+    def pop(self):
+        return self.stack.pop()
+
+    def peek(self):
+        return self.stack[len(self.stack) - 1]
+
+    def __str__(self):
+        return str(self.stack)
+
+    def isEmpty(self):
+        return self.stack == []
+
+    def size(self):
+        return len(self.stack)        
+consultation_queue = Queue()
+for i in patients:
+    consultation_queue.enqueue(i)
 
 
 
