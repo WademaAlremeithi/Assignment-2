@@ -1,7 +1,7 @@
 patients =[]
 #Patient class
 class Patient :
-    def __init__(self, name, dob, gender, phone_number, allergies, past_illness, vaccines, current_conditions, medications, assiend_doctor, appointment_date, appointment_time):
+    def __init__(self, name, dob, gender, phone_number, allergies, past_illness, vaccines, current_conditions, medications, assigned_doctor, appointment_date, appointment_time):
         self.name = name
         self.dob = dob
         self.gender = gender
@@ -11,7 +11,7 @@ class Patient :
         self.vaccines = vaccines
         self.current_conditions = current_conditions
         self.medications = medications
-        self.assiend_doctor = assiend_doctor 
+        self.assigned_doctor = assigned_doctor 
         self.appointment_date = appointment_date 
         self.appointment_time = appointment_time
 
@@ -74,8 +74,13 @@ class Patient :
         def set_current_conditions(self, current_conditions):
             self.current_conditions = current_conditions
 
-        def set_assiend_doctor(self, assiend_doctor):
-            self.assiend_doctor = assiend_doctor 
+        def set_assigned_doctor(self, assigned_doctor):
+            self.assigned_doctor = assigned_doctor 
+        def set_appointment_date(self, appointment_date):
+            self.appointment_date = appointment_date
+        
+        def set_appointment_time(self, appointment_time):
+            self.appointment_time = appointment_time
         
         def  store_patient(self, name):
             patients.append(name)
@@ -162,8 +167,18 @@ for patient in patients:
     for i in patient.medications:
        prescriptions.push(i)
     print(patient.name, "'s prescripstions are", prescriptions)
-
-
+appointments = {}
+def schedule_appointment(patient, doctor, appointment_time, appointment_date):
+    if doctor not in appointments:
+        appointments[doctor] = {}
+    if appointment_date not in appointments[doctor]:
+        appointments[doctor][appointment_date] ={}
+    if appointment_time not in appointments[doctor][appointment_date]:
+        appointments[doctor][appointment_date][appointment_time] = patient
+        print("Appointment sceduled for", patient, "with", doctor, "at", appointment_time, "on", appointment_time)
+def cancel_appointment(doctor, appointment_time, appointment_date):
+    patient = appointments[doctor][appointment_date].pop(appoinment_time)
+    print("Appointment Cancelled !")
 
 
 
