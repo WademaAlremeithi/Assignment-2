@@ -1,7 +1,7 @@
 patients =[]
 #Patient class
 class Patient :
-    def __init__(self, name, dob, gender, phone_number, allergies, past_illness, vaccines, current_conditions):
+    def __init__(self, name, dob, gender, phone_number, allergies, past_illness, vaccines, current_conditions, medications):
         self.name = name
         self.dob = dob
         self.gender = gender
@@ -10,6 +10,7 @@ class Patient :
         self.past_illness = past_illness
         self.vaccines = vaccines
         self.current_conditions = current_conditions
+        self.medications = medications
 
         #getters
         def get_name(self):
@@ -65,11 +66,12 @@ class Patient :
             patients.append(name)
             return patients
 
-class Doctors :
-    def __init__(self, name, id, department):
+class Doctor :
+    def __init__(self, name, id, department, assigned_patients):
         self.name = name
         self.id = id
         self.department = department
+        self.assigned_patients = assigned_patients
 
         #getters
         def get_name(self):
@@ -81,6 +83,9 @@ class Doctors :
         def get_department(self):
             return self.department
             
+        def get_assigned_patients(self):
+            return self.assigned_patients
+            
         #setters
         def set_name(self, name):
             self.name = name
@@ -90,6 +95,9 @@ class Doctors :
 
         def set_department(self, department):
             self.department = department
+        
+        def set_assigned_patients(self, patients):
+            self.assigned_patients.append(patients)
 
 class Queue: #this creates the class for the queue data structure to be used for the consultation queue of patients
     def __init__(self):
@@ -134,8 +142,11 @@ class Stack:
 consultation_queue = Queue()
 for i in patients:
     consultation_queue.enqueue(i)
-
-
+prescriptions = Stack()
+for patient in patients:
+    for i in patient.medications:
+       prescriptions.push(i)
+    print(patient.name, "'s prescripstions are", prescriptions)
 
 
 
