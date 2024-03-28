@@ -87,7 +87,7 @@ class Patient :
         return patients
 
     def __str__(self):
-        return f"Name: {self.name}, Date of Birth: {self.dob}, Gender: {self.gender}, Phone Number: {self.phone_number}, Allergies: {self.allergies}, Past Illness: {self.past_illness}, Vaccines: {self.vaccines}, Current Condition: {self.current_conditions}, Medications: {self.medication}, Assigned Doctor: {self.assigned_doctor}, Appointment Date: {self.appointment_date}, Appointment Time: {self.appointment_time}"
+        return f"Name: {self.name}, Date of Birth: {self.dob}, Gender: {self.gender}, Phone Number: {self.phone_number}, Allergies: {self.allergies}, Past Illness: {self.past_illness}, Vaccines: {self.vaccines}, Current Condition: {self.current_conditions}, Medications: {self.medications}, Assigned Doctor: {self.assigned_doctor}, Appointment Date: {self.appointment_date}, Appointment Time: {self.appointment_time}"
 
 class Doctor :
     def __init__(self, name, id, department, assigned_patients):
@@ -194,7 +194,7 @@ def cancel_appointment(doctor, appointment_time, appointment_date):
     patient.set_appointment_time("")
 
 def search_patient(patient):
-    if patient in patients:
+    if patient.name in patients:
         print("Patient Records Found !")
         print(patient)
     else:
