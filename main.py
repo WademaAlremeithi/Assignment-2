@@ -1,7 +1,7 @@
 patients =[]
 #Patient class
 class Patient :
-    def __init__(self, name, dob, gender, phone_number, allergies, past_illness, vaccines, current_conditions, medications):
+    def __init__(self, name, dob, gender, phone_number, allergies, past_illness, vaccines, current_conditions, medications, assiend_doctor, appointment_date, appointment_time):
         self.name = name
         self.dob = dob
         self.gender = gender
@@ -11,6 +11,9 @@ class Patient :
         self.vaccines = vaccines
         self.current_conditions = current_conditions
         self.medications = medications
+        self.assiend_doctor = assiend_doctor 
+        self.appointment_date = appointment_date 
+        self.appointment_time = appointment_time
 
         #getters
         def get_name(self):
@@ -37,6 +40,15 @@ class Patient :
         def get_current_conditions(self):
             return self.current_conditions
 
+        def get_assiend_doctor(self):
+            return self.assiend_doctor
+
+        def get_appointment_date(self):
+            return self.appointment_date 
+
+        def get_appointment_time(self):
+            return self.appointment_time
+
         #setters
         def set_name(self, name):
             self.name = name
@@ -61,6 +73,9 @@ class Patient :
 
         def set_current_conditions(self, current_conditions):
             self.current_conditions = current_conditions
+
+        def set_assiend_doctor(self, assiend_doctor):
+            self.assiend_doctor = assiend_doctor 
         
         def  store_patient(self, name):
             patients.append(name)
