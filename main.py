@@ -16,78 +16,78 @@ class Patient :
         self.appointment_time = appointment_time
 
         #getters
-        def get_name(self):
-            return self.name
+    def get_name(self):
+        return self.name
 
-        def get_dob(self):
-            return self.dob
+    def get_dob(self):
+        return self.dob
 
-        def get_gender(self):
-            return self.gender
+    def get_gender(self):
+        return self.gender
+        
+    def get_phone_number(self):
+        return self.phone_number
 
-        def get_phone_number(self):
-            return self.phone_number
+    def get_allergies(self):
+        return self.allergies
 
-        def get_allergies(self):
-            return self.allergies
+    def get_past_illness(self):
+        return self.past_illness
 
-        def get_past_illness(self):
-            return self.past_illness
+    def get_vaccines(self):
+        return self.vaccines
 
-        def get_vaccines(self):
-            return self.vaccines
+    def get_current_conditions(self):
+        return self.current_conditions
 
-        def get_current_conditions(self):
-            return self.current_conditions
+    def get_assigned_doctor(self):
+        return self.assiend_doctor
+    
+    def get_appointment_date(self):
+        return self.appointment_date 
 
-        def get_assigned_doctor(self):
-            return self.assiend_doctor
-
-        def get_appointment_date(self):
-            return self.appointment_date 
-
-        def get_appointment_time(self):
-            return self.appointment_time
+    def get_appointment_time(self):
+        return self.appointment_time
 
         #setters
-        def set_name(self, name):
-            self.name = name
+    def set_name(self, name):
+        self.name = name
 
-        def set_dob(self, dob):
-            self.dob = dob
+    def set_dob(self, dob):
+        self.dob = dob
 
-        def set_gender(self, gender):
-            self.gender = gender
+    def set_gender(self, gender):
+        self.gender = gender
 
-        def set_phone_number(self, phone_number):
-            self.phone_number = phone_number
+    def set_phone_number(self, phone_number):
+        self.phone_number = phone_number
 
-        def set_allergies(self, allergies):
-            self.allergies = allergies
+    def set_allergies(self, allergies):
+        self.allergies = allergies
 
-        def set_past_illness(self, past_illness):
-            self.past_illness = past_illness
+    def set_past_illness(self, past_illness):
+        self.past_illness = past_illness
 
-        def set_vaccines(self, vaccines):
-            self.vaccines = vaccines
+    def set_vaccines(self, vaccines):
+        self.vaccines = vaccines
 
-        def set_current_conditions(self, current_conditions):
-            self.current_conditions = current_conditions
+    def set_current_conditions(self, current_conditions):
+        self.current_conditions = current_conditions
 
-        def set_assigned_doctor(self, assigned_doctor):
-            self.assigned_doctor = assigned_doctor 
-        def set_appointment_date(self, appointment_date):
-            self.appointment_date = appointment_date
+    def set_assigned_doctor(self, assigned_doctor):
+        self.assigned_doctor = assigned_doctor 
+    def set_appointment_date(self, appointment_date):
+        self.appointment_date = appointment_date
         
-        def set_appointment_time(self, appointment_time):
-            self.appointment_time = appointment_time
+    def set_appointment_time(self, appointment_time):
+        self.appointment_time = appointment_time
         
-        def  store_patient(self, name):
-            patients.append(name)
-            return patients
+    def  store_patient(self):
+        patients.append(self.name)
+        return patients
 
-        def __str__(self):
-            return f"Name: {self.name}, Date of Birth: {self.dob}, Gender: {self.gender}, Phone Number: {self.phone_number}, Allergies: {self.allergies}, Past Illness: {self.past_illness}, Vaccines: {self.vaccines}, Current Condition: {self.current_conditions}, Medications: {self.medication}, Assigned Doctor: {self.assigned_doctor}, Appointment Date: {self.appointment_date}, Appointment Time: {self.appointment_time}"
+    def __str__(self):
+        return f"Name: {self.name}, Date of Birth: {self.dob}, Gender: {self.gender}, Phone Number: {self.phone_number}, Allergies: {self.allergies}, Past Illness: {self.past_illness}, Vaccines: {self.vaccines}, Current Condition: {self.current_conditions}, Medications: {self.medication}, Assigned Doctor: {self.assigned_doctor}, Appointment Date: {self.appointment_date}, Appointment Time: {self.appointment_time}"
 
 class Doctor :
     def __init__(self, name, id, department, assigned_patients):
@@ -97,30 +97,30 @@ class Doctor :
         self.assigned_patients = assigned_patients
 
         #getters
-        def get_name(self):
-            return self.name
+    def get_name(self):
+        return self.name
             
-        def get_id(self):
-            return self.id
+    def get_id(self):
+        return self.id
             
-        def get_department(self):
-            return self.department
+    def get_department(self):
+        return self.department
             
-        def get_assigned_patients(self):
-            return self.assigned_patients
+    def get_assigned_patients(self):
+        return self.assigned_patients
             
         #setters
-        def set_name(self, name):
-            self.name = name
+    def set_name(self, name):
+        self.name = name
 
-        def set_id(self, id):
-            self.id = id
+    def set_id(self, id):
+        self.id = id
 
-        def set_department(self, department):
-            self.department = department
+    def set_department(self, department):
+        self.department = department
         
-        def set_assigned_patients(self, patients):
-            self.assigned_patients.append(patients)
+    def set_assigned_patients(self, patients):
+        self.assigned_patients.append(patients)
 
 class Queue: #this creates the class for the queue data structure to be used for the consultation queue of patients
     def __init__(self):
@@ -199,7 +199,6 @@ def search_patient(patient):
         print(patient)
     else:
         print("Patient NOT found!")
-
 
 
 
