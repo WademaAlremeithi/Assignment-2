@@ -65,6 +65,12 @@ class Patient :
             patients.append(name)
             return patients
 
+class Doctors :
+    def __init__(self, name, id, department):
+        self.name = name
+        self.id = id
+        self.department = department
+
 class Queue: #this creates the class for the queue data structure to be used for the consultation queue of patients
     def __init__(self):
         self.items = []
