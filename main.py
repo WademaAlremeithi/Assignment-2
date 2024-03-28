@@ -65,10 +65,25 @@ class Patient :
         def set_current_conditions(self, current_conditions):
             self.current_conditions = current_conditions
 
+class Queue: #this creates the class for the queue data structure to be used for the consultation queue of patients
+    def __init__(self):
+        self.items = []
 
+    def isEmpty(self):
+        return self.items == []
 
+    def enqueue(self, item):
+        self.items.insert(0, item)
 
+    def dequeue(self):
+        return self.items.pop()
 
+    def size(self):
+        return len(self.items)
+
+    def __str__(self):
+        return str(self.items)
+        
 
 
 
