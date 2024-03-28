@@ -40,7 +40,7 @@ class Patient :
         def get_current_conditions(self):
             return self.current_conditions
 
-        def get_assiend_doctor(self):
+        def get_assigned_doctor(self):
             return self.assiend_doctor
 
         def get_appointment_date(self):
@@ -85,6 +85,9 @@ class Patient :
         def  store_patient(self, name):
             patients.append(name)
             return patients
+
+        def __str__(self):
+            return f"Name: {self.name}, Date of Birth: {self.dob}, Gender: {self.gender}, Phone Number: {self.phone_number}, Allergies: {self.allergies}, Past Illness: {self.past_illness}, Vaccines: {self.vaccines}, Current Condition: {self.current_conditions}, Medications: {self.medication}, Assigned Doctor: {self.assigned_doctor}, Appointment Date: {self.appointment_date}, Appointment Time: {self.appointment_time}"
 
 class Doctor :
     def __init__(self, name, id, department, assigned_patients):
@@ -159,15 +162,18 @@ class Stack:
 
     def size(self):
         return len(self.stack)        
+
 consultation_queue = Queue()
 for i in patients:
     consultation_queue.enqueue(i)
+
 prescriptions = Stack()
 for patient in patients:
     for i in patient.medications:
        prescriptions.push(i)
     print(patient.name, "'s prescripstions are", prescriptions)
 appointments = {}
+
 def schedule_appointment(patient, doctor, appointment_time, appointment_date):
     if doctor not in appointments:
         appointments[doctor] = {}
@@ -175,12 +181,24 @@ def schedule_appointment(patient, doctor, appointment_time, appointment_date):
         appointments[doctor][appointment_date] ={}
     if appointment_time not in appointments[doctor][appointment_date]:
         appointments[doctor][appointment_date][appointment_time] = patient
-        print("Appointment sceduled for", patient, "with", doctor, "at", appointment_time, "on", appointment_time)
+        print("Appointment sceduled for", patient, "with", doctor, "at", appointment_time, "on", appointment_date)
+        patient.set_assigned_doctor(doctor)
+        patient.set_appointment_date(appointment_date)
+        patient.set_appointment_time(appointment_time)
+
 def cancel_appointment(doctor, appointment_time, appointment_date):
     patient = appointments[doctor][appointment_date].pop(appoinment_time)
     print("Appointment Cancelled !")
+    patient.set_assigned_doctor("")
+    patient.set_appointment_date("")
+    patient.set_appointment_time("")
 
-
+def search_patient(patient):
+    if patient in patients:
+        print("Patient Records Found !")
+        print(patient)
+    else:
+        print("Patient NOT found!")
 
 
 
