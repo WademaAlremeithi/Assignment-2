@@ -71,6 +71,26 @@ class Doctors :
         self.id = id
         self.department = department
 
+        #getters
+        def get_name(self):
+            return self.name
+            
+        def get_id(self):
+            return self.id
+            
+        def get_department(self):
+            return self.department
+            
+        #setters
+        def set_name(self, name):
+            self.name = name
+
+        def set_id(self, id):
+            self.id = id
+
+        def set_department(self, department):
+            self.department = department
+
 class Queue: #this creates the class for the queue data structure to be used for the consultation queue of patients
     def __init__(self):
         self.items = []
