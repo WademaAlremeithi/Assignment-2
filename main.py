@@ -243,6 +243,22 @@ def add_patient():
     patient.store_patient()
     print("Patient record added successfully")
 
+#function to update a patient record
+def update_patient():
+    name = input("Enter patient's name to update: ")
+    for patient in patients:
+        if patient.name == name:
+            assigned_doctor = input("Enter updated assigned doctor: ")
+            appointment_date = input("Enter updated appointment date (YYYY-MM-DD): ")
+            appointment_time = input("Enter updated appointment time: ")
+            patient.set_assigned_doctor(assigned_doctor)
+            patient.set_appointment_date(appointment_date)
+            patient.set_appointment_time(appointment_time)
+            print("Patient record updated successfully")
+            return
+    print("Patient not found")
+            
+
 
 
 
