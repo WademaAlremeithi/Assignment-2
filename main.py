@@ -1,5 +1,4 @@
 #define an empty list to store patients records
-
 patients =[]
 #define Patient class to represent patient infromation
 class Patient :
@@ -224,6 +223,25 @@ def search_patient(patient):
         print(patient)
     else:
         print("Patient NOT found!")
+
+#function to add a new patient 
+def add_patient():
+    name = input("Enter patient's name: ")
+    dob = input("Enter patient's date of birth: ")
+    gender = input("Enter patient's gender: ")
+    phone_number = input("Enter patient's phone number: ")
+    allergies = input("Enter patient's allergies, if any: ")
+    past_illness = input("Enter patient's past illness, if any: ")
+    vaccines = input("Enter patient's vaccines: ")
+    current_conditions = input("Enter patient's current condition: ")
+    medications = input("Enter patient's medications, if any: ")
+    assigned_doctor = input("Enter assigned doctor: ")
+    appointment_date = input("Enter appointment date (YYYY-MM-DD): ")
+    appointment_time  = input("Enter appointment time: ")
+    
+    patient = Patient(name, dob, gender, phone_number, allergies, past_illness, vaccines, current_conditions, medications, assingned_doctor, appointment_date, appointment_time)
+    patient.store_patient()
+    print("Patient record added successfully")
 
 
 
