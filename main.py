@@ -248,6 +248,7 @@ def update_patient():
     name = input("Enter patient's name to update: ")
     for patient in patients:
         if patient.name == name:
+            #updating only the assigned doctor and appointment details
             assigned_doctor = input("Enter updated assigned doctor: ")
             appointment_date = input("Enter updated appointment date (YYYY-MM-DD): ")
             appointment_time = input("Enter updated appointment time: ")
@@ -255,6 +256,15 @@ def update_patient():
             patient.set_appointment_date(appointment_date)
             patient.set_appointment_time(appointment_time)
             print("Patient record updated successfully")
+            return
+    print("Patient not found")
+
+def delete_patient():
+    name = input("Enter patient's name to delete: ")
+    for patient in patients:
+        if patient.name == name:
+            patients.remove(patient)
+            print("Patient record deleted successfully")
             return
     print("Patient not found")
             
