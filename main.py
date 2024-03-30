@@ -259,6 +259,7 @@ def update_patient():
             return
     print("Patient not found")
 
+#function to delete a patient record
 def delete_patient():
     name = input("Enter patient's name to delete: ")
     for patient in patients:
@@ -267,6 +268,38 @@ def delete_patient():
             print("Patient record deleted successfully")
             return
     print("Patient not found")
+
+#menu deriven system
+while True:
+    print("\n       Patient Management System       ")
+    print("1. Add Patient Record")
+    print("2. Update Patient Record")
+    print("3. Delete Patient Record")
+    print("4. Search Patient Record")
+    print("5. Exit")
+    
+    choice = input("Enter your choice: ")
+    
+    if choice == '1':
+        add_patient()
+    elif choice == '2':
+        update_patient()
+    elif choice == '3':
+        delete_patient()
+    elif choice == '4':
+        name = input("Enter patient's name to search: ")
+        for patient in patients:
+            if patient.name == name:
+                print(patient)
+                break
+        else:   
+            print("Patient not found")
+    elif choice == '5':
+        print("Exiting...")
+        break
+    else:
+        print("Invalid choice. Please enter a valid option")
+    
             
 
 
