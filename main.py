@@ -43,7 +43,7 @@ class Patient :
         return self.current_conditions
 
     def get_assigned_doctor(self):
-        return self.assiend_doctor
+        return self.assigned_doctor
     
     def get_appointment_date(self):
         return self.appointment_date 
@@ -86,7 +86,7 @@ class Patient :
         
     #method to store patient record
     def  store_patient(self):
-        patients.append(self.name)
+        patients.append(self)
         return patients
 
     #override __str__ to display patient Information 
@@ -215,21 +215,28 @@ def schedule_appointment():
 #function to cancel an appointment 
 def cancel_appointment():
     doctor =input("Enter assigned doctor's name:")
-    patient= input("Enter patient's name: ")
+    patient_name= input("Enter patient's name: ")
     appointment_time = input("Enter appointment time:")
     appointment_date = input("Enter appointment date:")
-    patient = appointments[doctor][appointment_date].pop(appoinment_time)
-    print("Appointment Cancelled !")
-    patient.set_assigned_doctor("")
-    patient.set_appointment_date("")
-    patient.set_appointment_time("")
+    for patient in patients:
+        if patient.name == patient_name:
+            appointments = patient.get_assigned_doctor()
+        if doctor in appointments and appointment_date in appointments[doctor] and appointment_time in appointments[doctor][appointment_date]:
+            appointments[doctor][appointment_date].pop(appointment_time)
+            print("Appointment Cancelled !")
+            patient.set_assigned_doctor("")
+            patient.set_appointment_date("")
+            patient.set_appointment_time("")
+            return
 
 #function to search for a patient record 
 def search_patient():
     name = input("Enter patient's name to search: ")
-    if patient.name in patients:
-        print("Patient Records Found !")
-        print(patient)
+    for patient in patients:
+        if patient.get_name() == name:
+            print("Patient Records Found !")
+            print(patient)
+            return
     else:
         print("Patient NOT found!")
 
@@ -248,7 +255,7 @@ def add_patient():
     appointment_date = input("Enter appointment date (YYYY-MM-DD): ")
     appointment_time  = input("Enter appointment time: ")
     
-    patient = Patient(name, dob, gender, phone_number, allergies, past_illness, vaccines, current_conditions, medications, assingned_doctor, appointment_date, appointment_time)
+    patient = Patient(name, dob, gender, phone_number, allergies, past_illness, vaccines, current_conditions, medications, assigned_doctor, appointment_date, appointment_time)
     patient.store_patient()
     print("Patient record added successfully")
 
@@ -256,7 +263,7 @@ def add_patient():
 def update_patient():
     name = input("Enter patient's name to update: ")
     for patient in patients:
-        if patient.name == name:
+        if patient.get_name() == name:
             #updating only the assigned doctor and appointment details
             assigned_doctor = input("Enter updated assigned doctor: ")
             appointment_date = input("Enter updated appointment date (YYYY-MM-DD): ")
@@ -299,8 +306,6 @@ while True:
         delete_patient()
     elif choice == '4':
         search_patient()
-        else:   
-            print("Patient not found")
     elif choice == '5':
         schedule_appointment()
     elif choice == '6':
