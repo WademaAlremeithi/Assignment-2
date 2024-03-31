@@ -196,7 +196,11 @@ for patient in patients:
 appointments = {}
 
 #function to schedule an appointment for a patient with a doctor 
-def schedule_appointment(patient, doctor, appointment_time, appointment_date):
+def schedule_appointment():
+    doctor =input("Enter assigned doctor's name:")
+    patient= input("Enter patient's name: ")
+    appointment_time = input("Enter appointment time:")
+    appointment_date = input("Enter appointment date:")
     if doctor not in appointments:
         appointments[doctor] = {}
     if appointment_date not in appointments[doctor]:
@@ -209,7 +213,11 @@ def schedule_appointment(patient, doctor, appointment_time, appointment_date):
         patient.set_appointment_time(appointment_time)
 
 #function to cancel an appointment 
-def cancel_appointment(doctor, appointment_time, appointment_date):
+def cancel_appointment():
+    doctor =input("Enter assigned doctor's name:")
+    patient= input("Enter patient's name: ")
+    appointment_time = input("Enter appointment time:")
+    appointment_date = input("Enter appointment date:")
     patient = appointments[doctor][appointment_date].pop(appoinment_time)
     print("Appointment Cancelled !")
     patient.set_assigned_doctor("")
@@ -217,7 +225,8 @@ def cancel_appointment(doctor, appointment_time, appointment_date):
     patient.set_appointment_time("")
 
 #function to search for a patient record 
-def search_patient(patient):
+def search_patient():
+    name = input("Enter patient's name to search: ")
     if patient.name in patients:
         print("Patient Records Found !")
         print(patient)
@@ -276,7 +285,9 @@ while True:
     print("2. Update Patient Record")
     print("3. Delete Patient Record")
     print("4. Search Patient Record")
-    print("5. Exit")
+    print("5. Schedule Appointment")
+    print("6. Cancel Appointment")
+    print("7. Exit")
     
     choice = input("Enter your choice: ")
     
@@ -287,14 +298,14 @@ while True:
     elif choice == '3':
         delete_patient()
     elif choice == '4':
-        name = input("Enter patient's name to search: ")
-        for patient in patients:
-            if patient.name == name:
-                print(patient)
-                break
+        search_patient()
         else:   
             print("Patient not found")
     elif choice == '5':
+        schedule_appointment()
+    elif choice == '6':
+        cancel_appointment()
+    elif choice == '7':
         print("Exiting...")
         break
     else:
